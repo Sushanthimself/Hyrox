@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { MotionCard } from '@/motion/components/MotionCard';
+import { View } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useFadeIn } from '@/motion';
+import { Card } from '@/components/ui/Card';
+import { Text } from '@/components/ui/Text';
 import { cn } from '@/utils/cn';
 import { LucideIcon } from 'lucide-react-native';
 
@@ -23,35 +25,33 @@ export const StatCard: React.FC<StatCardProps> = ({
   iconColor = 'text-primary',
   delay = 0,
   className
-}) => {
+ }) => {
   const { animatedStyle } = useFadeIn({ delayMs: delay });
 
   return (
-    <MotionCard 
-      style={animatedStyle as any}
-      variant="elevated" 
-      className={cn('flex-1 p-4 items-start', className)}
-    >
-      <View className="flex-row items-center mb-2 w-full justify-between">
-        <Text className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          {title}
-        </Text>
-        {Icon && (
-          <View className="bg-surface p-1.5 rounded-md">
-            <Icon size={14} className={iconColor} />
-          </View>
-        )}
-      </View>
-      <View className="items-baseline flex-row gap-1">
-        <Text className="text-2xl font-bold text-foreground">
-          {value}
-        </Text>
-        {subtitle && (
-          <Text className="text-xs text-muted-foreground font-medium">
-            {subtitle}
+    <Animated.View style={animatedStyle} className={className}>
+      <Card variant="elevated" className="w-full p-4 items-start min-h-[95px] justify-between">
+        <View className="flex-row items-center w-full justify-between mb-1">
+          <Text className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
+            {title}
           </Text>
-        )}
-      </View>
-    </MotionCard>
+          {Icon && (
+            <View className="bg-surface p-1 rounded-md">
+              <Icon size={12} className={iconColor} />
+            </View>
+          )}
+        </View>
+        <View className="items-baseline flex-row gap-1 mt-2">
+          <Text className="text-2xl font-black text-foreground tabular-nums">
+            {value}
+          </Text>
+          {subtitle && (
+            <Text className="text-xs text-muted-foreground font-semibold">
+              {subtitle}
+            </Text>
+          )}
+        </View>
+      </Card>
+    </Animated.View>
   );
 };

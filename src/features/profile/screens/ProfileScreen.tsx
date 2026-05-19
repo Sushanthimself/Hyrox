@@ -58,21 +58,15 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSettingsPress })
         <AthleteBanner 
           profile={profile} 
           rank={state.rank as any} 
+          streakDays={state.streak.currentDays}
           isCurrentUser
           onEditPress={() => setIsEditModalVisible(true)}
           onSettingsPress={onSettingsPress}
         />
 
-        <View className="px-4 flex-row items-center justify-between mb-8">
-          <View className="flex-1 mr-4">
-            <StreakFlameBadge 
-              days={state.streak.currentDays}
-            />
-          </View>
-          <View className="flex-1">
-            <HybridScoreCard breakdown={state.hybridScore} />
-          </View>
-        </View>
+        <ProfileSection title="Hybrid Score Overview" className="mb-6">
+          <HybridScoreCard breakdown={state.hybridScore} />
+        </ProfileSection>
 
         <ProfileSection title="Rank Progress" className="mb-6">
           <RankProgressCard 
@@ -81,13 +75,14 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSettingsPress })
         </ProfileSection>
 
         <ProfileSection title="Lifetime Stats">
-          <View className="flex-row flex-wrap gap-4">
+          <View className="flex-row flex-wrap justify-between gap-y-4">
             <StatCard 
               title="Workouts"
               value={state.lifetimeWorkouts}
               subtitle="completed"
               icon={Activity}
               delay={100}
+              className="w-[48%]"
             />
             <StatCard 
               title="Distance"
@@ -96,9 +91,10 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSettingsPress })
               icon={Timer}
               iconColor="text-blue-500"
               delay={200}
+              className="w-[48%]"
             />
           </View>
-          <View className="flex-row flex-wrap gap-4 mt-4">
+          <View className="flex-row flex-wrap justify-between gap-y-4 mt-4">
             <StatCard 
               title="Max Deadlift"
               value={profile.strongestLifts[0].weight}
@@ -106,6 +102,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSettingsPress })
               icon={Dumbbell}
               iconColor="text-purple-500"
               delay={300}
+              className="w-[48%]"
             />
             <StatCard 
               title="Total XP"
@@ -113,6 +110,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSettingsPress })
               icon={Activity}
               iconColor="text-yellow-500"
               delay={400}
+              className="w-[48%]"
             />
           </View>
         </ProfileSection>

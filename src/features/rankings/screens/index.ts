@@ -1,1 +1,1 @@
-export type RankingsScreensModule = never;
+export * from './RankingsScreen';

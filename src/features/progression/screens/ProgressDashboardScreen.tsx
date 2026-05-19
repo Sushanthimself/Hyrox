@@ -1,6 +1,6 @@
-import { View } from 'react-native';
-
-import { Screen, Text } from '@/components/ui';
+import { View, ScrollView } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Text } from '@/components/ui';
 
 import { HybridScoreCard, RankProgressCard, StreakFlameBadge } from '../components';
 import { useProgression } from '../hooks/useProgression';
@@ -8,19 +8,25 @@ import { useProgression } from '../hooks/useProgression';
 export function ProgressDashboardScreen() {
   const { isReady, state } = useProgression();
 
+  const insets = useSafeAreaInsets();
+
   if (!isReady || !state) {
     return (
-      <Screen>
+      <View className="flex-1 bg-background justify-center items-center" style={{ paddingTop: insets.top }}>
         <Text tone="muted" variant="body">
           Loading progression…
         </Text>
-      </Screen>
+      </View>
     );
   }
 
   return (
-    <Screen scroll contentClassName="gap-4 pb-8">
-      <View className="gap-2 pt-2">
+    <View className="flex-1 bg-background" style={{ paddingTop: insets.top }}>
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 120 }}
+      >
+        <View className="gap-2 pt-2 mb-6">
         <Text tone="accent" variant="overline">
           Progression
         </Text>
@@ -34,19 +40,23 @@ export function ProgressDashboardScreen() {
       <StreakFlameBadge days={state.streak.currentDays} milestone={state.streak.currentDays >= 7} />
       <HybridScoreCard breakdown={state.hybridScore} />
 
-      <View className="rounded-xl border border-border/15 bg-surface/50 p-4">
-        <Text className="font-semibold" variant="bodyStrong">
-          Achievements
-        </Text>
-        <Text className="mt-1" tone="muted" variant="caption">
-          {state.unlockedAchievementIds.length} unlocked
-        </Text>
-        <Text className="mt-3 leading-5" tone="muted" variant="caption">
-          {state.unlockedAchievementIds.length > 0
-            ? state.unlockedAchievementIds.join(' · ')
-            : 'Complete workouts to unlock your first badge.'}
-        </Text>
-      </View>
-    </Screen>
+        <View 
+          className="rounded-xl border p-4 mt-6"
+          style={{ borderColor: 'rgba(255, 255, 255, 0.15)', backgroundColor: 'rgba(28, 28, 30, 0.5)' }}
+        >
+          <Text className="font-semibold" variant="bodyStrong">
+            Achievements
+          </Text>
+          <Text className="mt-1" tone="muted" variant="caption">
+            {state.unlockedAchievementIds.length} unlocked
+          </Text>
+          <Text className="mt-3 leading-5" tone="muted" variant="caption">
+            {state.unlockedAchievementIds.length > 0
+              ? state.unlockedAchievementIds.join(' · ')
+              : 'Complete workouts to unlock your first badge.'}
+          </Text>
+        </View>
+      </ScrollView>
+    </View>
   );
 }

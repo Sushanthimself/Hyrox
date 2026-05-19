@@ -8,14 +8,29 @@ import { createInitialProgressionState } from './progression-engine';
 export const progressionPersistence = {
   async load(): Promise<ProgressionState> {
     const raw = await AsyncStorage.getItem(PROGRESSION_STORAGE_KEY);
+    const defaults = createInitialProgressionState();
     if (!raw) {
-      return createInitialProgressionState();
+      return defaults;
     }
 
     try {
-      return JSON.parse(raw) as ProgressionState;
+      const parsed = JSON.parse(raw);
+      return {
+        ...defaults,
+        ...parsed,
+        streak: {
+          ...defaults.streak,
+          ...(parsed?.streak || {})
+        },
+        hybridScore: {
+          ...defaults.hybridScore,
+          ...(parsed?.hybridScore || {})
+        },
+        rank: parsed?.rank || defaults.rank,
+        unlockedAchievementIds: parsed?.unlockedAchievementIds || []
+      } as ProgressionState;
     } catch {
-      return createInitialProgressionState();
+      return defaults;
     }
   },
 

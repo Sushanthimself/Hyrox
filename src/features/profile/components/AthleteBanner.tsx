@@ -7,10 +7,12 @@ import { MapPin, Calendar, Edit3, Settings } from 'lucide-react-native';
 import Animated from 'react-native-reanimated';
 import { AthleteProfile } from '../types';
 import { RankTier } from '@/features/progression/types/progression';
+import { StreakFlameBadge } from '@/features/progression/components/StreakFlameBadge';
 
 interface AthleteBannerProps {
   profile: AthleteProfile;
   rank: RankTier;
+  streakDays: number;
   isCurrentUser?: boolean;
   onEditPress?: () => void;
   onSettingsPress?: () => void;
@@ -26,6 +28,7 @@ const RANK_COLORS: Record<string, string> = {
 export const AthleteBanner: React.FC<AthleteBannerProps> = ({
   profile,
   rank,
+  streakDays,
   isCurrentUser,
   onEditPress,
   onSettingsPress
@@ -77,7 +80,7 @@ export const AthleteBanner: React.FC<AthleteBannerProps> = ({
           </View>
           {/* Rank Badge Indicator */}
           <View 
-            className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full items-center justify-center border-2 border-background shadow-sm"
+            className="absolute -bottom-2 -right-4 min-w-[32px] w-auto px-2 h-8 rounded-full items-center justify-center border-2 border-background shadow-sm"
             style={{ backgroundColor: RANK_COLORS[rank.division] || '#2f80ff' }}
           >
             <Text className="text-white font-bold text-xs">
@@ -131,15 +134,19 @@ export const AthleteBanner: React.FC<AthleteBannerProps> = ({
           </View>
         </View>
 
-        <View className="flex-row items-center pt-3 border-t border-border">
-          <View className="mr-6 flex-row items-baseline">
-            <Text className="text-foreground font-bold text-lg mr-1">{profile.followingCount}</Text>
-            <Text className="text-muted-foreground text-sm">Following</Text>
+        {/* Stats & Streak Row */}
+        <View className="flex-row items-center justify-between mt-4 border-t border-border/10 pt-4 mb-2">
+          <View className="flex-row gap-6">
+            <View className="flex-row gap-1">
+              <Text className="text-foreground font-bold">{profile.followingCount}</Text>
+              <Text className="text-muted-foreground">Following</Text>
+            </View>
+            <View className="flex-row gap-1">
+              <Text className="text-foreground font-bold">{profile.followersCount}</Text>
+              <Text className="text-muted-foreground">Followers</Text>
+            </View>
           </View>
-          <View className="flex-row items-baseline">
-            <Text className="text-foreground font-bold text-lg mr-1">{profile.followersCount}</Text>
-            <Text className="text-muted-foreground text-sm">Followers</Text>
-          </View>
+          <StreakFlameBadge days={streakDays} />
         </View>
       </View>
     </Animated.View>
