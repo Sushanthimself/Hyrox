@@ -1,6 +1,7 @@
-# The Progression Platform for the Modern Hybrid Athlete
+# SharksFitness
+> *Because sharks need to keep moving to live.*
 
-Build a world-class, production-quality mobile app and platform for hybrid athletes that feels like a fusion of Strava, Duolingo progression systems, RPG ranking mechanics, and modern self-improvement culture.
+**The Progression Platform for the Modern Hybrid Athlete**
 
 The app should not feel like a boring fitness tracker.
 It should feel like:
