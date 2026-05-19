@@ -1,0 +1,1 @@
+export type RankingsUtilsModule = never;

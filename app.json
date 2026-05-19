@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "SharksFitness",
+    "slug": "sharksfitness",
+    "scheme": "sharksfitness",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sharksfitness.app"
+    },
+    "android": {
+      "package": "com.sharksfitness.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#05070A"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

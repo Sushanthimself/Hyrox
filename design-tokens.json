@@ -1,0 +1,264 @@
+{
+  "palette": {
+    "abyss": "#05070A",
+    "void": "#080B10",
+    "graphite": "#111821",
+    "carbon": "#17212B",
+    "steel": "#64748B",
+    "mist": "#CBD5E1",
+    "ice": "#F8FAFC",
+    "electric": "#2F80FF",
+    "aqua": "#21E6C1",
+    "volt": "#B6FF3B",
+    "crimson": "#FF3B5C",
+    "amber": "#FFB020",
+    "oxygen": "#F7FAFC"
+  },
+  "semanticColors": {
+    "dark": {
+      "background": "#05070A",
+      "foreground": "#F8FAFC",
+      "surface": "#0B0F14",
+      "surfaceElevated": "#111821",
+      "card": "#0D131B",
+      "cardForeground": "#F8FAFC",
+      "muted": "#1A2430",
+      "mutedForeground": "#94A3B8",
+      "border": "#FFFFFF",
+      "input": "#FFFFFF",
+      "ring": "#2F80FF",
+      "primary": "#2F80FF",
+      "primaryForeground": "#FFFFFF",
+      "secondary": "#21E6C1",
+      "secondaryForeground": "#021713",
+      "accent": "#B6FF3B",
+      "accentForeground": "#0A1203",
+      "success": "#50DC78",
+      "warning": "#FFB020",
+      "danger": "#FF3B5C",
+      "dangerForeground": "#FFFFFF",
+      "glass": "#FFFFFF",
+      "overlay": "#000000",
+      "skeletonBase": "#FFFFFF",
+      "skeletonHighlight": "#FFFFFF"
+    },
+    "light": {
+      "background": "#F7FAFC",
+      "foreground": "#07111F",
+      "surface": "#FFFFFF",
+      "surfaceElevated": "#EEF2F7",
+      "card": "#FFFFFF",
+      "cardForeground": "#07111F",
+      "muted": "#E2E8F0",
+      "mutedForeground": "#475569",
+      "border": "#0F172A",
+      "input": "#0F172A",
+      "ring": "#145CFF",
+      "primary": "#145CFF",
+      "primaryForeground": "#FFFFFF",
+      "secondary": "#039B82",
+      "secondaryForeground": "#ECFFFB",
+      "accent": "#6EA600",
+      "accentForeground": "#F9FFE8",
+      "success": "#169B4B",
+      "warning": "#B87500",
+      "danger": "#D61F45",
+      "dangerForeground": "#FFFFFF",
+      "glass": "#FFFFFF",
+      "overlay": "#020617",
+      "skeletonBase": "#CBD5E1",
+      "skeletonHighlight": "#FFFFFF"
+    }
+  },
+  "colorValues": {
+    "dark": {
+      "background": "5 7 10",
+      "foreground": "248 250 252",
+      "surface": "11 15 20",
+      "surfaceElevated": "17 24 33",
+      "card": "13 19 27",
+      "cardForeground": "248 250 252",
+      "muted": "26 36 48",
+      "mutedForeground": "148 163 184",
+      "border": "255 255 255",
+      "input": "255 255 255",
+      "ring": "47 128 255",
+      "primary": "47 128 255",
+      "primaryForeground": "255 255 255",
+      "secondary": "33 230 193",
+      "secondaryForeground": "2 23 19",
+      "accent": "182 255 59",
+      "accentForeground": "10 18 3",
+      "success": "80 220 120",
+      "warning": "255 176 32",
+      "danger": "255 59 92",
+      "dangerForeground": "255 255 255",
+      "glass": "255 255 255",
+      "overlay": "0 0 0",
+      "skeletonBase": "255 255 255",
+      "skeletonHighlight": "255 255 255"
+    },
+    "light": {
+      "background": "247 250 252",
+      "foreground": "7 17 31",
+      "surface": "255 255 255",
+      "surfaceElevated": "238 242 247",
+      "card": "255 255 255",
+      "cardForeground": "7 17 31",
+      "muted": "226 232 240",
+      "mutedForeground": "71 85 105",
+      "border": "15 23 42",
+      "input": "15 23 42",
+      "ring": "20 92 255",
+      "primary": "20 92 255",
+      "primaryForeground": "255 255 255",
+      "secondary": "3 155 130",
+      "secondaryForeground": "236 255 251",
+      "accent": "110 166 0",
+      "accentForeground": "249 255 232",
+      "success": "22 155 75",
+      "warning": "184 117 0",
+      "danger": "214 31 69",
+      "dangerForeground": "255 255 255",
+      "glass": "255 255 255",
+      "overlay": "2 6 23",
+      "skeletonBase": "203 213 225",
+      "skeletonHighlight": "255 255 255"
+    }
+  },
+  "spacing": {
+    "0": 0,
+    "px": 1,
+    "0.5": 2,
+    "1": 4,
+    "1.5": 6,
+    "2": 8,
+    "2.5": 10,
+    "3": 12,
+    "3.5": 14,
+    "4": 16,
+    "5": 20,
+    "6": 24,
+    "7": 28,
+    "8": 32,
+    "10": 40,
+    "12": 48,
+    "14": 56,
+    "16": 64,
+    "20": 80,
+    "24": 96
+  },
+  "radii": {
+    "none": 0,
+    "xs": 4,
+    "sm": 6,
+    "md": 8,
+    "lg": 12,
+    "xl": 16,
+    "2xl": 24,
+    "full": 999
+  },
+  "typography": {
+    "fontFamily": {
+      "display": "System",
+      "body": "System",
+      "mono": "Courier"
+    },
+    "fontSize": {
+      "xs": 12,
+      "sm": 14,
+      "md": 16,
+      "lg": 18,
+      "xl": 22,
+      "2xl": 28,
+      "3xl": 34,
+      "hero": 44
+    },
+    "lineHeight": {
+      "xs": 16,
+      "sm": 20,
+      "md": 24,
+      "lg": 26,
+      "xl": 30,
+      "2xl": 36,
+      "3xl": 42,
+      "hero": 52
+    },
+    "fontWeight": {
+      "regular": "400",
+      "medium": "500",
+      "semibold": "600",
+      "bold": "700",
+      "black": "900"
+    }
+  },
+  "motion": {
+    "duration": {
+      "instant": 80,
+      "fast": 160,
+      "base": 240,
+      "slow": 360,
+      "cinematic": 520
+    },
+    "spring": {
+      "subtle": {
+        "damping": 18,
+        "stiffness": 180
+      },
+      "expressive": {
+        "damping": 16,
+        "stiffness": 240
+      }
+    }
+  },
+  "elevation": {
+    "none": {
+      "shadowColor": "#000000",
+      "shadowOpacity": 0,
+      "shadowRadius": 0,
+      "shadowOffset": {
+        "width": 0,
+        "height": 0
+      },
+      "elevation": 0
+    },
+    "sm": {
+      "shadowColor": "#000000",
+      "shadowOpacity": 0.14,
+      "shadowRadius": 10,
+      "shadowOffset": {
+        "width": 0,
+        "height": 4
+      },
+      "elevation": 2
+    },
+    "md": {
+      "shadowColor": "#000000",
+      "shadowOpacity": 0.2,
+      "shadowRadius": 18,
+      "shadowOffset": {
+        "width": 0,
+        "height": 10
+      },
+      "elevation": 6
+    },
+    "glow": {
+      "shadowColor": "#2F80FF",
+      "shadowOpacity": 0.28,
+      "shadowRadius": 22,
+      "shadowOffset": {
+        "width": 0,
+        "height": 12
+      },
+      "elevation": 8
+    }
+  },
+  "zIndex": {
+    "base": 0,
+    "raised": 10,
+    "sticky": 100,
+    "overlay": 1000,
+    "modal": 1100,
+    "toast": 1200
+  }
+}
