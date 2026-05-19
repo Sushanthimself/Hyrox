@@ -4,16 +4,24 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MotionPressable } from '@/motion/components/MotionPressable';
 import { useSlideReveal } from '@/motion';
 import { MapPin, Calendar, Edit3, Settings } from 'lucide-react-native';
+import Animated from 'react-native-reanimated';
 import { AthleteProfile } from '../types';
-import { RANK_DEFINITIONS, UserRank } from '@/features/progression/constants/ranks';
+import { RankTier } from '@/features/progression/types/progression';
 
 interface AthleteBannerProps {
   profile: AthleteProfile;
-  rank: UserRank;
+  rank: RankTier;
   isCurrentUser?: boolean;
   onEditPress?: () => void;
   onSettingsPress?: () => void;
 }
+
+const RANK_COLORS: Record<string, string> = {
+  Open: '#B87333',
+  Pro: '#C0C7D1',
+  Elite: '#FFD166',
+  Champion: '#FF3B5C'
+};
 
 export const AthleteBanner: React.FC<AthleteBannerProps> = ({
   profile,
@@ -22,7 +30,7 @@ export const AthleteBanner: React.FC<AthleteBannerProps> = ({
   onEditPress,
   onSettingsPress
 }) => {
-  const animatedStyle = useSlideReveal({ direction: 'down', delay: 100 });
+  const { animatedStyle } = useSlideReveal({ axis: 'y', delayMs: 100 });
   
   // Default placeholder if no avatar
   const avatarSource = profile.avatarUrl 
@@ -30,7 +38,7 @@ export const AthleteBanner: React.FC<AthleteBannerProps> = ({
     : { uri: `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.displayName)}&background=2f80ff&color=fff&size=200` };
 
   return (
-    <View style={animatedStyle} className="mb-6">
+    <Animated.View style={animatedStyle as any} className="mb-6">
       {/* Cover Image Area */}
       <View className="h-32 w-full bg-surface relative overflow-hidden rounded-b-3xl">
         {profile.coverUrl ? (
@@ -70,10 +78,10 @@ export const AthleteBanner: React.FC<AthleteBannerProps> = ({
           {/* Rank Badge Indicator */}
           <View 
             className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full items-center justify-center border-2 border-background shadow-sm"
-            style={{ backgroundColor: rank.color }}
+            style={{ backgroundColor: RANK_COLORS[rank.division] || '#2f80ff' }}
           >
             <Text className="text-white font-bold text-xs">
-              {rank.level}
+              {rank.label.split(' ')[0]}
             </Text>
           </View>
         </View>
@@ -134,6 +142,6 @@ export const AthleteBanner: React.FC<AthleteBannerProps> = ({
           </View>
         </View>
       </View>
-    </View>
+    </Animated.View>
   );
 };

@@ -66,20 +66,17 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSettingsPress })
         <View className="px-4 flex-row items-center justify-between mb-8">
           <View className="flex-1 mr-4">
             <StreakFlameBadge 
-              currentStreak={state.streak.currentDays}
-              hasCheckedInToday={state.streak.isActiveToday}
+              days={state.streak.currentDays}
             />
           </View>
           <View className="flex-1">
-            <HybridScoreCard score={state.hybridScore.total} size="sm" />
+            <HybridScoreCard breakdown={state.hybridScore} />
           </View>
         </View>
 
         <ProfileSection title="Rank Progress" className="mb-6">
           <RankProgressCard 
-            currentRank={state.rank as any} 
-            xpIntoRank={state.xpIntoCurrentRank}
-            xpToNextRank={state.xpToNextRank || 1}
+            state={state} 
           />
         </ProfileSection>
 

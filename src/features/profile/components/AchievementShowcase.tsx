@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { MotionCard } from '@/motion/components/MotionCard';
-import { useStagger } from '@/motion';
 import { cn } from '@/utils/cn';
 import { Award, Zap, Flame, Target, Star, TrendingUp } from 'lucide-react-native';
 import { ACHIEVEMENT_DEFINITIONS } from '@/features/progression/constants/achievements';
@@ -38,7 +37,7 @@ export const AchievementShowcase: React.FC<AchievementShowcaseProps> = ({
   unlockedIds,
   className
 }) => {
-  const animatedStyles = useStagger({ count: unlockedIds.length, delay: 200, stagger: 100 });
+
 
   if (unlockedIds.length === 0) {
     return (
@@ -68,7 +67,7 @@ export const AchievementShowcase: React.FC<AchievementShowcaseProps> = ({
         return (
           <MotionCard 
             key={achievement.id}
-            style={animatedStyles[index]}
+            delayMs={index * 100 + 200}
             className={cn('w-40 p-4 items-center justify-center border', bgClass)}
           >
             <View className={cn("p-3 rounded-full bg-background/50 mb-3", colorClass)}>

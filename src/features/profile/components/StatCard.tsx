@@ -24,11 +24,11 @@ export const StatCard: React.FC<StatCardProps> = ({
   delay = 0,
   className
 }) => {
-  const animatedStyle = useFadeIn({ delay });
+  const { animatedStyle } = useFadeIn({ delayMs: delay });
 
   return (
     <MotionCard 
-      style={animatedStyle}
+      style={animatedStyle as any}
       variant="elevated" 
       className={cn('flex-1 p-4 items-start', className)}
     >
