@@ -1,0 +1,422 @@
+{
+  "project": {
+    "name": "Hybrid Athlete Social Platform",
+    "vision": "A scalable social fitness platform for hybrid athletes combining workout tracking, running analytics, gamification, social feeds, and athlete identity systems.",
+    "core_principles": [
+      "Scalable architecture first",
+      "Real-time social interactions",
+      "Efficient activity tracking",
+      "High-performance leaderboard systems",
+      "Event-driven backend design",
+      "Modular feature expansion",
+      "Mobile-first experience"
+    ]
+  },
+
+  "system_architecture": {
+    "frontend": {
+      "framework": "React Native",
+      "state_management": "Zustand",
+      "navigation": "React Navigation",
+      "data_fetching": "React Query",
+      "charts": "Victory Native",
+      "maps": "Mapbox",
+      "realtime": "Supabase Realtime"
+    },
+
+    "backend": {
+      "runtime": "Node.js",
+      "framework": "Express.js",
+      "language": "TypeScript",
+      "architecture_style": "Modular Monolith initially, Microservices later",
+      "authentication": "Supabase Auth",
+      "realtime_engine": "WebSockets",
+      "background_jobs": "BullMQ",
+      "api_style": "REST + WebSocket"
+    },
+
+    "database": {
+      "primary": "PostgreSQL",
+      "cache": "Redis",
+      "analytics_future": "ClickHouse",
+      "storage": "Supabase Storage"
+    }
+  },
+
+  "data_structures": {
+    "arrays": {
+      "usage": [
+        "Workout exercise lists",
+        "Run coordinate paths",
+        "Activity feeds",
+        "Comments",
+        "Achievements"
+      ],
+      "example": {
+        "workout": [
+          {
+            "exercise": "Bench Press",
+            "sets": [
+              {
+                "weight": 80,
+                "reps": 8
+              }
+            ]
+          }
+        ]
+      },
+      "scalability_notes": [
+        "Paginate large arrays",
+        "Never return entire feed arrays",
+        "Use lazy loading",
+        "Use infinite scrolling"
+      ]
+    },
+
+    "hashmaps": {
+      "usage": [
+        "User stats lookup",
+        "Cached rankings",
+        "Session management",
+        "Workout aggregation"
+      ],
+      "example": {
+        "userStats": {
+          "weeklyVolume": 25000,
+          "weeklyMileage": 18,
+          "hybridScore": 824
+        }
+      },
+      "implementation": [
+        "JavaScript objects",
+        "Redis hashes",
+        "PostgreSQL JSONB fields"
+      ],
+      "performance": "O(1) lookup"
+    },
+
+    "graphs": {
+      "usage": [
+        "Follower relationships",
+        "Social recommendations",
+        "Club memberships",
+        "Mutual athlete connections"
+      ],
+      "example": {
+        "edge": "UserA -> follows -> UserB"
+      },
+      "future_expansion": [
+        "Suggested athletes",
+        "Community clustering",
+        "Friend recommendations"
+      ]
+    },
+
+    "priority_queues": {
+      "usage": [
+        "Leaderboards",
+        "Top athletes",
+        "Trending workouts",
+        "Season rankings"
+      ],
+      "implementation": [
+        "Redis Sorted Sets",
+        "Binary Heap"
+      ],
+      "performance": "Efficient top-K retrieval"
+    },
+
+    "trees": {
+      "usage": [
+        "Nested comments",
+        "Category hierarchies",
+        "Sport classifications"
+      ],
+      "example": {
+        "sports": {
+          "Running": [
+            "5K",
+            "10K",
+            "Marathon"
+          ],
+          "Strength": [
+            "Powerlifting",
+            "Bodybuilding"
+          ]
+        }
+      }
+    },
+
+    "sets": {
+      "usage": [
+        "Unique achievements",
+        "Liked posts",
+        "Completed challenges",
+        "Unlocked badges"
+      ],
+      "benefits": [
+        "Prevents duplicate entries",
+        "Fast membership checks"
+      ]
+    },
+
+    "queues": {
+      "usage": [
+        "Notification delivery",
+        "Feed fanout",
+        "AI insight generation",
+        "Background analytics processing"
+      ],
+      "implementation": [
+        "BullMQ",
+        "Redis queues"
+      ]
+    },
+
+    "time_series_data": {
+      "usage": [
+        "Workout history",
+        "Running progress",
+        "Pace trends",
+        "Strength progression",
+        "Streak calculations"
+      ],
+      "storage_strategy": [
+        "Indexed timestamps",
+        "Partitioned tables later",
+        "Aggregated weekly snapshots"
+      ]
+    }
+  },
+
+  "database_schema": {
+    "users": {
+      "fields": [
+        "id",
+        "username",
+        "email",
+        "profile_image",
+        "rank",
+        "xp",
+        "hybrid_score",
+        "streak",
+        "created_at"
+      ],
+      "indexes": [
+        "username",
+        "hybrid_score"
+      ]
+    },
+
+    "activities": {
+      "fields": [
+        "id",
+        "user_id",
+        "type",
+        "duration",
+        "calories",
+        "visibility",
+        "created_at"
+      ],
+      "indexes": [
+        "user_id",
+        "created_at",
+        "type"
+      ]
+    },
+
+    "workouts": {
+      "fields": [
+        "id",
+        "activity_id",
+        "volume",
+        "muscle_groups",
+        "workout_type"
+      ]
+    },
+
+    "workout_exercises": {
+      "fields": [
+        "id",
+        "workout_id",
+        "exercise_name",
+        "sets",
+        "reps",
+        "weight"
+      ]
+    },
+
+    "runs": {
+      "fields": [
+        "id",
+        "activity_id",
+        "distance",
+        "pace",
+        "elevation",
+        "route_coordinates"
+      ]
+    },
+
+    "follows": {
+      "fields": [
+        "follower_id",
+        "following_id"
+      ],
+      "indexes": [
+        "follower_id",
+        "following_id"
+      ]
+    },
+
+    "comments": {
+      "fields": [
+        "id",
+        "activity_id",
+        "user_id",
+        "parent_comment_id",
+        "text",
+        "created_at"
+      ]
+    },
+
+    "likes": {
+      "fields": [
+        "user_id",
+        "activity_id"
+      ]
+    },
+
+    "leaderboards": {
+      "fields": [
+        "user_id",
+        "season",
+        "xp",
+        "rank",
+        "hybrid_score"
+      ]
+    },
+
+    "clubs": {
+      "fields": [
+        "id",
+        "name",
+        "description",
+        "created_by"
+      ]
+    }
+  },
+
+  "scalability_strategy": {
+    "phase_1": {
+      "focus": [
+        "Single PostgreSQL database",
+        "Simple feed system",
+        "Manual activity logging",
+        "Basic rankings"
+      ]
+    },
+
+    "phase_2": {
+      "focus": [
+        "Redis caching",
+        "Realtime notifications",
+        "Optimized feed queries",
+        "Leaderboard optimization"
+      ]
+    },
+
+    "phase_3": {
+      "focus": [
+        "Microservices",
+        "Dedicated analytics engine",
+        "AI recommendation systems",
+        "Feed ranking algorithms"
+      ]
+    }
+  },
+
+  "feed_architecture": {
+    "initial_strategy": "Chronological feed",
+    "future_strategy": "Ranking algorithm based feed",
+    "optimization": [
+      "Cursor pagination",
+      "Redis feed cache",
+      "Lazy loading",
+      "Background feed generation"
+    ]
+  },
+
+  "leaderboard_system": {
+    "algorithm": {
+      "hybrid_score_formula": {
+        "strength_score": 0.4,
+        "cardio_score": 0.4,
+        "consistency_score": 0.2
+      }
+    },
+
+    "storage": "Redis Sorted Sets",
+
+    "features": [
+      "Global rankings",
+      "Campus rankings",
+      "Friend rankings",
+      "Season ladders"
+    ]
+  },
+
+  "event_driven_design": {
+    "events": [
+      "USER_COMPLETED_WORKOUT",
+      "USER_COMPLETED_RUN",
+      "USER_GAINED_XP",
+      "USER_RANKED_UP",
+      "NEW_FOLLOWER",
+      "NEW_COMMENT"
+    ],
+
+    "event_pipeline": [
+      "Trigger analytics",
+      "Update streaks",
+      "Recalculate rankings",
+      "Push notifications",
+      "Generate feed items"
+    ]
+  },
+
+  "ai_expansion_future": {
+    "possible_features": [
+      "Performance insights",
+      "Adaptive coaching",
+      "Recovery recommendations",
+      "Overtraining detection",
+      "Workout summaries"
+    ],
+
+    "future_stack": [
+      "Vector database",
+      "Embedding search",
+      "LLM-based insights"
+    ]
+  },
+
+  "performance_rules": [
+    "Always paginate feeds",
+    "Cache leaderboard queries",
+    "Avoid N+1 database queries",
+    "Use indexes aggressively",
+    "Move heavy tasks to queues",
+    "Batch notifications",
+    "Use CDN for media delivery",
+    "Precompute analytics where possible"
+  ],
+
+  "engineering_rules": [
+    "Do not over-engineer MVP",
+    "Prioritize retention over complexity",
+    "Build social systems first",
+    "Optimize only after usage data",
+    "Keep modules isolated",
+    "Use typed APIs everywhere"
+  ]
+}
