@@ -1,1 +1,1 @@
-export type ProfileScreensModule = never;
+export * from './ProfileScreen';

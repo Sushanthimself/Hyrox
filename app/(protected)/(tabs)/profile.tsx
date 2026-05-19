@@ -1,28 +1,23 @@
-import { View } from 'react-native';
-
-import { Button, Screen, Text } from '@/components/ui';
-import { useAuth } from '@/features/auth/hooks/useAuth';
+import React from 'react';
+import { View, Alert } from 'react-native';
+import { ProfileScreen } from '@/features/profile';
 import { useSignOut } from '@/features/auth/hooks/useSignOut';
 
 export default function ProfileRoute() {
-  const auth = useAuth();
-  const { isPending, signOut } = useSignOut();
+  const { signOut } = useSignOut();
 
-  return (
-    <Screen scroll contentClassName="gap-6">
-      <View className="gap-2">
-        <Text tone="accent" variant="overline">
-          Athlete profile
-        </Text>
-        <Text variant="heading">{auth.user?.email ?? 'Athlete'}</Text>
-        <Text tone="muted" variant="body">
-          Protected profile shell — rank cards and achievements land here next.
-        </Text>
-      </View>
+  // Handle settings/signout via the AthleteBanner settings icon (which will be added if not fully there)
+  // Or we can add a signout button inside the EditProfileModal, but let's just use an alert from settings for now
+  const handleSettingsPress = () => {
+    Alert.alert(
+      'Settings',
+      'Choose an action',
+      [
+        { text: 'Sign Out', onPress: signOut, style: 'destructive' },
+        { text: 'Cancel', style: 'cancel' }
+      ]
+    );
+  };
 
-      <Button fullWidth loading={isPending} onPress={signOut} variant="secondary">
-        Sign out
-      </Button>
-    </Screen>
-  );
+  return <ProfileScreen onSettingsPress={handleSettingsPress} />;
 }
